@@ -2,4 +2,6 @@
 #### Repo: 2143 Object Oriented
 #### Email: allywarren7@gmail.com
 #### Image:
-![Allyson Warren](https://imgur.com/a/priwvod)
+<!--- my image was huge and I couldn't figure out how to downsize it with markdown
+      so I am using HTML --->
+<img src="https://i.imgur.com/xoRvMvY.png" width="200" />
