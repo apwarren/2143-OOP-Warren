@@ -1,4 +1,4 @@
-/****************************************************************
+/**************************************************************************
 *
 * Author:      Allyson Warren
 * Email:       allywarren7@gmail.com
@@ -8,18 +8,18 @@
 * Semester:    Fall 2020
 *
 * Description:
-*     This program implements a Queue data structure using a
-*     linked list. While being used to print out integers
-*     starting from the first value, the list is also 
-*     implemented to where it can be used like an array
-*     by overloading the [] operator to traverse through
-*     the list.
+*     This program implements a Queue data structure using a linked list. 
+*     While being used to print out integers starting from the first 
+*     value, the list is also implemented to where it can be used like 
+*     an array by overloading the [] operator to traverse through
+*     the list. Values can be added to both the front and end
+*     of the list through Insert and Push.
 *     
 * Usage:
 *     None
 * Files:
 *     main.cpp     :   driver program
-****************************************************************/
+**************************************************************************/
 #include <iostream>
 
 using namespace std;
@@ -198,24 +198,23 @@ public:
 */
     string Print()
     {
-        Node* Temp = Head;              //Get Address to the beginning of the list
-        string list;                    //Holds all values from the list
+        Node* Temp = Head;                       //Get Address to the beginning of the list
+        string list;                             //Holds all values from the list
 
-        while (Temp != NULL)            //Not at the end of the list
+        while (Temp != NULL)                     //Not at the end of the list
         {
-                                        //Add values from list and separate with an arrow 
+                                                 //Add values from list and separate with an arrow 
             list += to_string(Temp->x) + "->";
-            Temp = Temp->next;          //Go to next value in list
+            Temp = Temp->next;                   //Go to next value in list
         }
 
-        return list;                    //return string with list's values
+        return list;                             //return string with list's values
     }
 /**
 * Public : Pop
 *
 * Description:
 *     Grabs the first integer in the list and then removes it from the list.
-*   
 *
 * Params:
 *     No parameters
@@ -245,32 +244,32 @@ public:
     List operator+(const List& Rhs)
     {
         
-        List NewList;          //Create a new list that will contain both when done
+        List NewList;                 //Create a new list that will contain both when done
 
-        Node* Temp = Head;     //Get a reference to beginning of local list
+        Node* Temp = Head;            //Get a reference to beginning of local list
 
-        while (Temp != NULL)   //Loop through local list and Push values onto new list
+        while (Temp != NULL)          //Loop through local list and Push values onto new list
         {
             NewList.Push(Temp->x);
-            Temp = Temp->next; //Go to next node in list
+            Temp = Temp->next;        //Go to next node in list
         }
                                
-        Temp = Rhs.Head;       //Get a reference to head of Rhs
+        Temp = Rhs.Head;              //Get a reference to head of Rhs
 
-        while (Temp != NULL)   //Same as above, loop and push
+        while (Temp != NULL)          //Same as above, loop and push
         {
             NewList.Push(Temp->x);
             Temp = Temp->next;
         }
 
         
-        return NewList;        //Return new concatenated version of lists
+        return NewList;               //Return new concatenated version of lists
     }
 /**
 * Public : operator[]
 *
 * Description:
-*     returns a desired int value using array notation.
+*     Returns a desired int value using array notation.
 *
 * Params:
 *     int     :   how far to traverse through the list
