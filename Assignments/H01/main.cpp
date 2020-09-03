@@ -21,6 +21,7 @@
 *     main.cpp     :   driver program
 **************************************************************************/
 #include <iostream>
+#include <string>
 
 using namespace std;
 
