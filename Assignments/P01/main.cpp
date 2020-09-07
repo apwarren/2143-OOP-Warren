@@ -60,6 +60,7 @@ private:
     int capacity; //max stack size
     int top;      //current top (index)
     int size;     //current num items
+    int MinSize;  //Minimum size of stack
 public:
     /**
      * Stack:
@@ -75,6 +76,7 @@ public:
         S = new int[capacity];  // allocate new memory
         top = -1;               // initialize top of stack
         size = 0;               // set stack to empty
+        MinSize = capacity;     //Minimum size of array
     }
 
     /**
@@ -91,6 +93,7 @@ public:
         S = new int[capacity];  // allocate new memory
         top = -1;               // initialize top of stack
         size = 0;               // set stack to empty
+        MinSize = capacity;     //Minimum size of array
     }
 
     /**
@@ -104,21 +107,33 @@ public:
      */
     void Push(int data) {
 
-        if (Full())                                 // Stack size is full
+        if (Full())                                      // Stack size is full
         {
-            int* newStack = new int[capacity * 2];  // New stack with doubled size
+            int* newStack = new int[capacity * 2];       // New stack with doubled size
             for (int x = 0; x < capacity; x++)
             {
-                newStack[x] = S[x];                 // Fill new stack with current values
+                newStack[x] = S[x];                      // Fill new stack with current values
             }
-            delete[] S;                             // Delete previous stack
-            S = newStack;                           // point to new stack
-            capacity *= 2;                          // Double capacity for new stack size
+            delete[] S;                                  // Delete previous stack
+            S = newStack;                                // point to new stack
+            capacity *= 2;                               // Double capacity for new stack size
         }
-                                                    // Stack has space for data
-        top++;                                      // move top of stack up
-        size++;                                     // increment size
-        S[top] = data;                              // add item to array
+                                                         // Stack has space for data
+        top++;                                           // move top of stack up
+        size++;                                          // increment size
+        S[top] = data;                                   // add item to array
+
+        if((capacity != MinSize) && (size < capacity/2)) //Shrink array if the number of values
+        {                                                //is less than half the size of the array
+            int* newStack = new int[capacity / 2];       // New stack with half previous size
+            for (int x = 0; x < capacity/2; x++)
+            {
+                newStack[x] = S[x];                      // Fill new stack with current values
+            }
+            delete[] S;                                  // Delete previous stack
+            S = newStack;                                // point to new stack
+            capacity /= 2;                               //Current capacity is half the size of before
+        }
     }
 
     /**
@@ -134,7 +149,7 @@ public:
 
         if (Empty())                             // Checks for empty stack
         {                                       // Cannot pop anything
-            cout << "Error: Stack empty!";      // Prints error message
+            cout << "Error: Stack empty!" << endl;      // Prints error message
             return -1;
         }
         // If stack is not empty
