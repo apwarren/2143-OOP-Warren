@@ -143,7 +143,7 @@ public:
      *    void
      *
      * Returns:
-     *     int
+     *     int  :   last value in stack
      */
     int Pop() {
 
