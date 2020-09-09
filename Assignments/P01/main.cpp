@@ -56,11 +56,11 @@ using namespace std;
  */
 class Stack {
 private:
-    int* S;       //array pointer
-    int capacity; //max stack size
-    int top;      //current top (index)
-    int size;     //current num items
-    int MinSize;  //Minimum size of stack
+    int* S;       // Array pointer
+    int capacity; // Max stack size
+    int top;      // Current top (index)
+    int size;     // Current num items
+    int MinSize;  // Minimum size of stack
 public:
     /**
      * Stack:
@@ -72,11 +72,11 @@ public:
      *     Void
      */
     Stack() {
-        capacity = 10;          // set array size
-        S = new int[capacity];  // allocate new memory
-        top = -1;               // initialize top of stack
-        size = 0;               // set stack to empty
-        MinSize = capacity;     //Minimum size of array
+        capacity = 10;          // Set array size
+        S = new int[capacity];  // Allocate new memory
+        top = -1;               // Initialize top of stack
+        size = 0;               // Set stack to empty
+        MinSize = capacity;     // Minimum size of array
     }
 
     /**
@@ -89,11 +89,11 @@ public:
      *     Void
      */
     Stack(int cap) {
-        capacity = cap;         // set array size      
-        S = new int[capacity];  // allocate new memory
-        top = -1;               // initialize top of stack
-        size = 0;               // set stack to empty
-        MinSize = capacity;     //Minimum size of array
+        capacity = cap;         // Set array size      
+        S = new int[capacity];  // Allocate new memory
+        top = -1;               // Initialize top of stack
+        size = 0;               // Set stack to empty
+        MinSize = capacity;     // Minimum size of array
     }
 
     /**
@@ -115,24 +115,24 @@ public:
                 newStack[x] = S[x];                      // Fill new stack with current values
             }
             delete[] S;                                  // Delete previous stack
-            S = newStack;                                // point to new stack
+            S = newStack;                                // Point to new stack
             capacity *= 2;                               // Double capacity for new stack size
         }
                                                          // Stack has space for data
-        top++;                                           // move top of stack up
-        size++;                                          // increment size
-        S[top] = data;                                   // add item to array
+        top++;                                           // Move top of stack up
+        size++;                                          // Increment size
+        S[top] = data;                                   // Add item to array
 
-        if((capacity != MinSize) && (size < capacity/2)) //Shrink array if the number of values
-        {                                                //is less than half the size of the array
+        if((capacity != MinSize) && (size < capacity/2)) // Shrink array if the number of value is less than half the size of the array
+        {
             int* newStack = new int[capacity / 2];       // New stack with half previous size
             for (int x = 0; x < capacity/2; x++)
             {
                 newStack[x] = S[x];                      // Fill new stack with current values
             }
             delete[] S;                                  // Delete previous stack
-            S = newStack;                                // point to new stack
-            capacity /= 2;                               //Current capacity is half the size of before
+            S = newStack;                                // Point to new stack
+            capacity /= 2;                               // Current capacity is half the size of before
         }
     }
 
@@ -147,16 +147,16 @@ public:
      */
     int Pop() {
 
-        if (Empty())                             // Checks for empty stack
-        {                                       // Cannot pop anything
+        if (Empty())                                    // Checks for empty stack
+        {                                               // Cannot pop anything
             cout << "Error: Stack empty!" << endl;      // Prints error message
             return -1;
         }
         // If stack is not empty
-        int data = S[top];                      // pull item from stack
-        top--;                                  // shrink the stack
-        size--;                                 // update our size
-        return data;                            // send item back
+        int data = S[top];                              // Pull item from stack
+        top--;                                          // Shrink the stack
+        size--;                                         // Update our size
+        return data;                                    // Send item back
     }
 
     /**
@@ -196,7 +196,7 @@ public:
      *     void
      */
     void Print() {
-        for (int i = top; i >= 0; i--) {   //Prints last data value to the first
+        for (int i = top; i >= 0; i--) {   // Prints last data value to the first
             cout << S[i] << endl;
         }
     }
@@ -213,8 +213,7 @@ public:
      *     ostream
      */
     friend ostream& operator<<(ostream& os, const Stack s) {
-        os << "Overloaded!!" << endl;
-        for (int i = s.top; i >= 0; i--) {
+        for (int i = s.top; i >= 0; i--) {      // Print out values from stack at a certain index
             os << s.S[i] << endl;
         }
         return os;
@@ -223,24 +222,25 @@ public:
 
 int main() {
 
-    Stack S;                                //Create Stack Object
-    ifstream infile;                        //Read from input.txt file
+    Stack S;                                // Create Stack Object
+    ifstream infile;                        // Read from input.txt file
     infile.open("input.txt");
-    string MethodType;                      //Type of function to call: Push or Pop
-    int data;                               //Value to put into stack
-    while (infile >> MethodType)            //Read all data items in file
+    string MethodType;                      // Type of function to call: push or pop
+    int data;                               // Value to put into stack if pushed
+    while (infile >> MethodType)            // Read all data items in file
     {
-        if (MethodType == "push")           //Add values from file to stack
+        if (MethodType == "push")           // Add values from file to stack
         {
-            infile >> data;
-            S.Push(data);
+            infile >> data;                 // Get value from file
+            S.Push(data);                   // Add to stack
         }
-        if (MethodType == "pop")            //Remove values from stack
+        if (MethodType == "pop")            // Remove values from stack
         {
             S.Pop();
         }
     }
-    S.Print();                              //Print out stack from last to first value
-
+    S.Print();                              // Print out stack from last to first placed value
+   
+    infile.close();                         // Close input file
     return 0;
 }
