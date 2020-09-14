@@ -132,13 +132,13 @@ public:
             if (MaxSize < capacity)
                 MaxSize = capacity;                      // Get the largest possible size of stack
         }
-        // Stack has space for data
-        top++;                                           // move top of stack up
-        size++;                                          // increment size
-        S[top] = data;                                   // add item to array
+                                                         // Stack has space for data
+        top++;                                           // Move top of stack up
+        size++;                                          // Increment size
+        S[top] = data;                                   // Add item to array
 
-        if ((capacity != MinSize) && (size < capacity / 2)) //Shrink array if the number of values
-        {                                                //is less than half the size of the array
+        if((capacity != MinSize) && (size < capacity/2)) // Shrink array if the number of value is less than half the size of the array
+        {
             int* newStack = new int[capacity / 2];       // New stack with half previous size
             for (int x = 0; x < capacity / 2; x++)
             {
@@ -170,10 +170,10 @@ public:
             return -1;
         }
         // If stack is not empty
-        int data = S[top];                      // pull item from stack
-        top--;                                  // shrink the stack
-        size--;                                 // update our size
-        return data;                            // send item back
+        int data = S[top];                              // Pull item from stack
+        top--;                                          // Shrink the stack
+        size--;                                         // Update our size
+        return data;                                    // Send item back
     }
 
     /**
@@ -213,7 +213,7 @@ public:
      *     void
      */
     void Print() {
-        for (int i = top; i >= 0; i--) {   //Prints last data value to the first
+        for (int i = top; i >= 0; i--) {   // Prints last data value to the first
             cout << S[i] << endl;
         }
     }
@@ -268,8 +268,7 @@ public:
      *     ostream
      */
     friend ostream& operator<<(ostream& os, const Stack s) {
-        os << "Overloaded!!" << endl;
-        for (int i = s.top; i >= 0; i--) {
+        for (int i = s.top; i >= 0; i--) {      // Print out values from stack at a certain index
             os << s.S[i] << endl;
         }
         return os;
@@ -302,12 +301,12 @@ int main() {
     int data;                               //Value to put into stack
     while (infile >> MethodType)            //Read all data items in file
     {
-        if (MethodType == "push")           //Add values from file to stack
+        if (MethodType == "push")           // Add values from file to stack
         {
-            infile >> data;
-            S.Push(data);
+            infile >> data;                 // Get value from file
+            S.Push(data);                   // Add to stack
         }
-        if (MethodType == "pop")            //Remove values from stack
+        if (MethodType == "pop")            // Remove values from stack
         {
             S.Pop();
         }
