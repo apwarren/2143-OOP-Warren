@@ -116,40 +116,40 @@ public:
      */
     void Push(int data) {
 
-        if (Full())                                      // Stack size is full
+        if (Full())                                         // Stack size is full
         {
-            int* newStack = new int[capacity * 2];       // New stack with doubled size
+            int* newStack = new int[capacity * 2];          // New stack with doubled size
             for (int x = 0; x < capacity; x++)
             {
-                newStack[x] = S[x];                      // Fill new stack with current values
+                newStack[x] = S[x];                         // Fill new stack with current values
             }
-            delete[] S;                                  // Delete previous stack
-            S = newStack;                                // point to new stack
-                                                         // Print to screen the change in array size
+            delete[] S;                                     // Delete previous stack
+            S = newStack;                                   // point to new stack
+                                                            // Print to screen the change in array size
             cout << "+ : " << capacity << " -> " << capacity * 2 << endl;       
 
-            capacity *= 2;                               // Double capacity for new stack size
+            capacity *= 2;                                  // Double capacity for new stack size
             if (MaxSize < capacity)
-                MaxSize = capacity;                      // Get the largest possible size of stack
+                MaxSize = capacity;                         // Get the largest possible size of stack
         }
-                                                         // Stack has space for data
-        top++;                                           // Move top of stack up
-        size++;                                          // Increment size
-        S[top] = data;                                   // Add item to array
+                                                            // Stack has space for data
+        top++;                                              // Move top of stack up
+        size++;                                             // Increment size
+        S[top] = data;                                      // Add item to array
 
-        if((capacity != MinSize) && (size < capacity/2)) // Shrink array if the number of value is less than half the size of the array
+        if((capacity != MinSize) && (size < capacity/2))    // Shrink array if the number of value is less than half the size of the array
         {
-            int* newStack = new int[capacity / 2];       // New stack with half previous size
+            int* newStack = new int[capacity / 2];          // New stack with half previous size
             for (int x = 0; x < capacity / 2; x++)
             {
-                newStack[x] = S[x];                      // Fill new stack with current values
+                newStack[x] = S[x];                         // Fill new stack with current values
             }
-            delete[] S;                                  // Delete previous stack
-            S = newStack;                                // Point to new stack
-                                                         // Print to screen change in array size
+            delete[] S;                                     // Delete previous stack
+            S = newStack;                                   // Point to new stack
+                                                            // Print to screen change in array size
             cout << "- : " << capacity << " -> " << capacity / 2 << endl;
 
-            capacity /= 2;                               //Current capacity is half the size of before
+            capacity /= 2;                                  //Current capacity is half the size of before
         }
     }
 
@@ -284,11 +284,12 @@ public:
     * Returns:
     *     string : Header for both output file and screen
     */
-string Header()     //Returns Header of screen and file
+string Header()     //Returns student information
 {
     //Prints out name, program #, and date on separate lines
     return "Name: Allyson Warren \nProgram: PO1 \nDate: 15 Sep 2020\n\n";
 }
+
 int main() {
 
     cout << Header();                       //Prints student information to screen
