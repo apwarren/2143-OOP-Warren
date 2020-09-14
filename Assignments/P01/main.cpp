@@ -19,7 +19,7 @@
 *
 * Files:
 *       main.cpp        :  driver program
-*       input.txt       :  text file containing values and whether to push or pop
+*       (Add text input file later)
 *
 *******************************************************************************/
 #include <iostream>
@@ -41,6 +41,9 @@ using namespace std;
  *      - bool empty()
  *      - bool full()
  *      - void Print()
+ *      - int getInitialSize()
+ *      - int getMaxSize()
+ *      - int getLastSize()
  *
  * Private Methods:
  *      - None
@@ -52,6 +55,9 @@ using namespace std;
  *  S.Push(90);
  *  S.Print();
  *  int x = S.Pop();
+ *  S.getInitialSize();
+ *  S.getMaxSize();
+ *  S.getLastSize();
  *
  */
 class Stack {
@@ -61,6 +67,7 @@ private:
     int top;      //current top (index)
     int size;     //current num items
     int MinSize;  //Minimum size of stack
+    int MaxSize;  //Maximum size of array
 public:
     /**
      * Stack:
@@ -77,6 +84,7 @@ public:
         top = -1;               // initialize top of stack
         size = 0;               // set stack to empty
         MinSize = capacity;     //Minimum size of array
+        MaxSize = MinSize;      //Starting array is largest size initially
     }
 
     /**
@@ -94,6 +102,7 @@ public:
         top = -1;               // initialize top of stack
         size = 0;               // set stack to empty
         MinSize = capacity;     //Minimum size of array
+        MaxSize = MinSize;      //Starting array is largest size initially
     }
 
     /**
@@ -116,22 +125,30 @@ public:
             }
             delete[] S;                                  // Delete previous stack
             S = newStack;                                // point to new stack
+                                                         // Print to screen the change in array size
+            cout << "+ : " << capacity << " -> " << capacity * 2 << endl;       
+
             capacity *= 2;                               // Double capacity for new stack size
+            if (MaxSize < capacity)
+                MaxSize = capacity;                      // Get the largest possible size of stack
         }
-                                                         // Stack has space for data
+        // Stack has space for data
         top++;                                           // move top of stack up
         size++;                                          // increment size
         S[top] = data;                                   // add item to array
 
-        if((capacity != MinSize) && (size < capacity/2)) //Shrink array if the number of values
+        if ((capacity != MinSize) && (size < capacity / 2)) //Shrink array if the number of values
         {                                                //is less than half the size of the array
             int* newStack = new int[capacity / 2];       // New stack with half previous size
-            for (int x = 0; x < capacity/2; x++)
+            for (int x = 0; x < capacity / 2; x++)
             {
                 newStack[x] = S[x];                      // Fill new stack with current values
             }
             delete[] S;                                  // Delete previous stack
-            S = newStack;                                // point to new stack
+            S = newStack;                                // Point to new stack
+                                                         // Print to screen change in array size
+            cout << "- : " << capacity << " -> " << capacity / 2 << endl;
+
             capacity /= 2;                               //Current capacity is half the size of before
         }
     }
@@ -143,13 +160,13 @@ public:
      *    void
      *
      * Returns:
-     *     int  :   last value in stack
+     *     int
      */
     int Pop() {
 
-        if (Empty())                             // Checks for empty stack
-        {                                       // Cannot pop anything
-            cout << "Error: Stack empty!" << endl;      // Prints error message
+        if (Empty())                                    // Checks for empty stack
+        {                                               // Cannot pop anything
+            //cout << "Error: Stack empty!" << endl;    // Prints error message
             return -1;
         }
         // If stack is not empty
@@ -200,7 +217,45 @@ public:
             cout << S[i] << endl;
         }
     }
-
+    /**
+     * getInitialSize:
+     *    Returns the starting size of array
+     * Params:
+     *    void
+     *
+     * Returns:
+     *     int  :   size of array
+     */
+    int getInitialSize()
+    {
+        return MinSize;     // Return starting size of array
+    }
+    /**
+     * getMaxSize:
+     *    Returns the largest size of array
+     * Params:
+     *    void
+     *
+     * Returns:
+     *     int  :   size of array
+     */
+    int getMaxSize()
+    {
+        return MaxSize;     // Return biggest size of array
+    }
+    /**
+     * getMaxSize:
+     *    Returns the final size of array
+     * Params:
+     *    void
+     *
+     * Returns:
+     *     int  :   size of array
+     */
+    int getLastSize()
+    {
+        return capacity;     // Return final size of array
+    }
     /**
      * Overloaded ostream <<
      *    Lets us print a stack using cout
@@ -221,11 +276,28 @@ public:
     }
 };
 
+/**
+    * Header:
+    *    Returns a string containing student name, program #, and date
+    * Params:
+    *    void
+    *
+    * Returns:
+    *     string : Header for both output file and screen
+    */
+string Header()     //Returns Header of screen and file
+{
+    //Prints out name, program #, and date on separate lines
+    return "Name: Allyson Warren \nProgram: PO1 \nDate: 15 Sep 2020\n\n";
+}
 int main() {
 
+    cout << Header();                       //Prints student information to screen
     Stack S;                                //Create Stack Object
     ifstream infile;                        //Read from input.txt file
     infile.open("input.txt");
+    ofstream outfile;                       //Make and open an output file to place data into
+    outfile.open("output.txt");
     string MethodType;                      //Type of function to call: Push or Pop
     int data;                               //Value to put into stack
     while (infile >> MethodType)            //Read all data items in file
@@ -240,7 +312,15 @@ int main() {
             S.Pop();
         }
     }
-    S.Print();                              //Print out stack from last to first value
 
+    // Prints student information to output file
+    outfile << Header();                    
+    //Print out first, largest, and final sizes of stack S
+    outfile << "Start Size: " << S.getInitialSize() << endl;
+    outfile << "Max Size: " << S.getMaxSize() << endl;
+    outfile << "Ending Size: " << S.getLastSize();
+
+    infile.close();
+    outfile.close();
     return 0;
 }
