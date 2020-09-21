@@ -19,7 +19,7 @@
 *
 * Files:
 *       main.cpp        :  driver program
-*       (Add text input file later)
+*       input.txt       : input file containing values to be pushed or popped
 *
 *******************************************************************************/
 #include <iostream>
