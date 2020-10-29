@@ -117,4 +117,4 @@ a deck. The user can play against a dealer and other players with a starting amo
        - Print: Prints out current state of game to console
        - nextRound: Issues all final tallies to the players and begins a new game when Still reaches 0
  #### Diagram
-<img src="https://i.imgur.com/97LgO6j.png" width="900">
+<img src="https://i.imgur.com/Wv0bWiC.png" width="900">
