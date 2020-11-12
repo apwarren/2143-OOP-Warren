@@ -13,6 +13,7 @@ Originally the sort method would compare one card to all cards after it; however
 | :---: | -------------------------------------------------------------------------------------------- | ------------------------------- |
 |   1   | [main.cpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/H03/main.cpp) | Main driver of the blackjack program. |
 |   2   | [blackjack.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/H03/blackjack.hpp) | Program containing all blackjack classes and the sort method in the hand class. |
+|   3   | [fix.cpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/H03/fix.cpp) | Program containing only the swap function with the new fix |
 
 
 ### Instructions
