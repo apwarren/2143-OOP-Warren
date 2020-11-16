@@ -381,7 +381,7 @@ Hand::Hand(){
 // vector "sort". But ... oh well.
 /*
 *   Sort()
-*   The function originally compared i to j+1 and determined which card rank was higher,
+*   The function originally compared i to j+1 and determined which card rank was higher;
 *   however, when it went to swap the two ranks, it would swap the card at j rather than the 
 *   card at j+1 because of how the index was set up. Rather than have j be equal to i and then
 *   compare i to j+1, it is better to already have j be 1 greater than i and loop through as such.
