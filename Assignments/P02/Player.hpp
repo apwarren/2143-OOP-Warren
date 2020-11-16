@@ -27,6 +27,9 @@ public:
   }
   void Tie()
   {
+    if(BlackJack())
+      BetAmount -= 25;
+
     Bank += BetAmount;
   }
   bool Bankrupt()
@@ -41,7 +44,7 @@ public:
   {
     if(Cards.getTotal() == 21 && Cards.size() == 2)
     {
-      Bank += 250;
+      BetAmount += 25;
       return true; //Ends game if player gets a BlackJack
     }
     return false;

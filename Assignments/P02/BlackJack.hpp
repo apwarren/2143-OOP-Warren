@@ -56,9 +56,14 @@ void PrintBeginning();
     //Check for BlackJack
      if(player->BlackJack())
           {
+          if(dealer->BlackJack())
+          player->Tie();
+          else
+          {
           Print();
           cout << "BLACKJACK!!!!\n";
           Activity = 0;
+          }
           }
     //If no BlackJack then continue playing until everyone is finished with hand
     while(Activity > 0)
