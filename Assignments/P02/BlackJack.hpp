@@ -66,22 +66,25 @@ void PrintBeginning();
           }
           }
     //If no BlackJack then continue playing until everyone is finished with hand
-    while(Activity > 0)
+    if(Activity > 0)
     {    
-      if(player->isActive())
+      while(player->isActive() && Activity > 2)
         playerTurn();
         //Dealer's turn
-      if(dealer->isActive() && Activity > 1)
+      while(dealer->isActive() && Activity > 1)
       {
+        
+        cout << "Dealer is Playing. . .\n";
         chrono::milliseconds dura( 1000 );
         this_thread::sleep_for( dura );
+        
         dealerTurn();
       }
 
       if(Activity == 1) //Both Player and Dealer have Stood/ No Bust
           noBust();
 
-    }//if Not bankrupt and Still Active loop    
+    }//if Not bankrupt   
   }
     resetGame();
 }
@@ -145,9 +148,7 @@ void BlackJack :: playerTurn()
           {
             if(!Quit)
             Print();
-            if(dealer->isActive())
-            cout << "Dealer is Playing. . .\n";
-            else
+            if(player->isActive())
             cout << "Your Move.\n";
           }
           playerMoveOn = false;
@@ -175,8 +176,6 @@ void BlackJack :: dealerTurn()
           }
         else
         {
-          Print();
-          cout << "Dealer has Stood.\n";
           dealer->Stand();
           Activity--;
         }

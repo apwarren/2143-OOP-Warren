@@ -1,3 +1,4 @@
+#pragma once
 #include <algorithm> // std::random_shuffle
 #include <iostream>
 #include <fstream>
