@@ -275,5 +275,5 @@ cout<< endl;
 cout << "Total: --";
 cout << "\n\nBank: " << player->getBank();
 cout << "\n";
-cout << "\n\t\t| Press Any Key To Begin Playing |" << endl;
+cout << "\n\t\t| Press Any Key And Hit Enter To Begin Playing |" << endl;
 }
