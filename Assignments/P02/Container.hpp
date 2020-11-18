@@ -98,10 +98,31 @@ void Container :: add(Card* card)
 }//End of add()
 
 /**
-* Public: isEmpty
+* Public: size
 *
-*    This function checks to see if there are any cards in the
-*		container. If there are no cards and the size is 0 the
+*    A function which gives the current size of the container.
+*		It does not give the overall size.
+*
+* Params:
+*    None
+*
+* Returns:
+*     1 int	:	Current size of container
+* 
+*/
+int Container :: size()
+{
+	return Size;	//Get size of container
+
+}//End of size()
+
+/**
+* Public: Sort
+*
+*    This function sorts all the cards in the vector by order
+*	 of rank with Ace being the lowest and King being the highest.
+*	 It uses a bubble sort in order to swap values until all cards
+*	 have been sorted. 
 *
 * Params:
 *    None
@@ -110,29 +131,21 @@ void Container :: add(Card* card)
 *     Void
 * 
 */
-	bool Container :: isEmpty()
+void Container :: Sort()
+{
+    for(int i=0;i<size()-1;i++)
 	{
-		return Size;
-	}
-	int Container :: size()
-	{
-		return Size;	//Get size of container
-	}
-    void Container :: Sort()
-    {
-       for(int i=0;i<size()-1;i++)
-       {
-        // Index "j"
+        
         for(int j=i+1;j<size();j++)
         {
             //Comparing cards at position i and j 
             if(cards[i]->getPosition()%13 > cards[j]->getPosition()%13)
             {
-                // standard swap 
+                //Swap cards locations if I has a greater rank
                 Card* temp = cards[i];
                 cards[i] = cards[j];
                 cards[j] = temp;
             }
         }
-       }
     }
+}//End of Sort()
