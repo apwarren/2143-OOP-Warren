@@ -90,7 +90,7 @@ public:
             cout << endl;
             for(int j = 0; j < 13; j++)
             {
-                cout << cards[j + counter]->cardMiddle(cards[j + counter]->getSuit()) << ' ';
+			      cout << "| :" << cards[j+counter]->getSuit() << ": |\n";
             }
             cout << endl;
             for(int j = 0; j < 13; j++)
@@ -120,7 +120,7 @@ public:
             cout << endl;
         for(int i = counter; i < size(); i++)
             {
-                cout << cards[i-1]->cardMiddle(cards[i]->getSuit()) << ' ';
+			      cout << "| :" << cards[i]->getSuit() << ": |\n";
             }
             cout << endl;
         for(int i = counter; i < size(); i++)

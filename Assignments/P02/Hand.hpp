@@ -10,7 +10,7 @@ private:
 public:
 Hand(Card* card1): Container (2) //Initialize a deck of 52 cards
 	{
-      Card* blank = new Card(-1); //Acts as the back side of the first card
+    Card* blank = new Card(-1); //Acts as the back side of the first card
     cards[0] = blank;
     cards[1] = card1;
     sum = card1->getValue();

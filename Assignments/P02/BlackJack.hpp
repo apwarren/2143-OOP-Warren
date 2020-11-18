@@ -78,8 +78,10 @@ class BlackJack
 };
 
 /**
-* Stack:
+* BlackJack:
+
 *    Constructor. 
+
 * Params:
 *    1 int : How many decks the user wishes to play with
 *
@@ -583,6 +585,6 @@ void BlackJack :: PrintBeginning()
             //Get Player input
     cout << "\n\t\t| Press Any Key And Hit Enter To Begin Playing |" << endl;
             //Credits
-    cout << "\nCreated by: Allyson Warren \nProgram: PO2 \nDate: 15 Nov 2020\n\n";
+    cout << "\nCreated by: Allyson Warren \nProgram: PO2 \nDate: 15 Nov 2020\n";
 
 }//End of PrintBeginning()
