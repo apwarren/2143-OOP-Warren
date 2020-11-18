@@ -147,9 +147,11 @@ void BlackJack :: playerTurn()
           else
           {
             if(!Quit)
+            {
             Print();
             if(player->isActive())
             cout << "Your Move.\n";
+            }
           }
           playerMoveOn = false;
 }
@@ -276,4 +278,5 @@ cout << "Total: --";
 cout << "\n\nBank: " << player->getBank();
 cout << "\n";
 cout << "\n\t\t| Press Any Key And Hit Enter To Begin Playing |" << endl;
+cout << "\nCreated by: Allyson Warren \nProgram: PO2 \nDate: 15 Nov 2020\n\n";
 }
