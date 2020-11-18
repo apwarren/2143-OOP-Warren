@@ -34,14 +34,14 @@ using namespace std;
  *
  * Usage:
  *
- *  BlackJack(3);
- *  Game.Deal();
- *  !Game.quit();
- *  Game.PrintBeginning();
- *  playerTurn();
- *  dealerTurn();
- *  noBust();
- *  Print();
+ *  BlackJack(3);           //Create instance of BlackJack
+ *  Game.Deal();            //Initiate a game of BlackJack
+ *  !Game.quit();           //Flag to see is user wants to quit playing
+ *  Game.PrintBeginning();  //Print out the Home screen before playing game
+ *  playerTurn();           //Begin the player's turn
+ *  dealerTurn();           //Begin the dealer's turn
+ *  noBust();               //Determine winner and compare cards
+ *  Print();                //Print out status of current game
  *
  */
 
@@ -79,9 +79,9 @@ class BlackJack
 
 /**
 * BlackJack:
-
+*
 *    Constructor. 
-
+*
 * Params:
 *    1 int : How many decks the user wishes to play with
 *
@@ -106,7 +106,7 @@ BlackJack :: BlackJack(int decks): CardDeck(decks * 52)
 }//End of BlackJack(int)
 
 /**
-* Deal:
+* Public: Deal
 * 
 *    Begins a game of BlackJack. Primary function of the BlackJack class.
 *    Handles dealer and player's turn and most private member functions.
@@ -158,8 +158,8 @@ void BlackJack :: Deal()
          //Player gets 2.5X bet amount and wins game
        else
        {
-         Print();
          player->Win();
+         Print();
          cout << "BLACKJACK!!!!\n";
          Activity = 0;
        }
@@ -204,7 +204,7 @@ void BlackJack :: Deal()
 }//End of Deal()
 
 /**
-* resetGame:
+* Private: resetGame
 *
 *    This function resets all activity and sets up for a new 
 *    game of Blackjack for the player if they choose to play again.
@@ -238,7 +238,7 @@ void BlackJack :: resetGame()
 }//End of resetGame()
 
 /**
-* playerTurn:
+* Private: playerTurn
 *
 *    This function handles player input and activity. The player
 *    is able to Hit, Stand, Sort Hand, See the deck, or quit whenever 
@@ -336,7 +336,7 @@ void BlackJack :: playerTurn()
 }//End of playerTurn()
 
 /**
-* dealerTurn:
+* Private: dealerTurn
 *
 *    This function handles Dealer activity. The dealer
 *    must continue to hit and add cards to its hand until
@@ -398,7 +398,7 @@ void BlackJack :: dealerTurn()
 }//End of dealerTurn()
 
 /**
-* noBust:
+* Private: noBust
 *
 *    This function determines the winner if neither the
 *    player nor the dealer gets a bust. The function
@@ -452,7 +452,7 @@ void BlackJack :: noBust()
 }//End of noBust()
 
 /**
-* quit:
+* Public: quit
 *
 *    This function determines when the player no longer wishes
 *    continue to play blackjack and will end the program when 
@@ -473,7 +473,7 @@ bool BlackJack:: quit()
 }//End of quit()
     
 /**
-* Print:
+* Private: Print
 *
 *    This function prints out the game layout and current status
 *    the game. It is the graphics for the game. The function is 
@@ -530,7 +530,7 @@ void BlackJack :: Print()
 }//End of Print()
 
 /**
-* PrintBeginning:
+* Public: PrintBeginning
 *
 *    This function prints out a "Home Screen" for the game when the
 *    the program gets called. It is part of the graphics for the game.

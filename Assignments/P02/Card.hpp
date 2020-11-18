@@ -36,16 +36,16 @@ using namespace std;
  *
  * Usage:
  *
- *  Card(52);
- *  card1.setValue(2);
- *  card1.setRank(2);
- *  card1.setSuit(3);
- *  card1.getValue();
- *  card1.getRank();
- *  card1.getSuit();
- *  !card1.isAce();
- * 	card1.print();
- * 	card1.cardMiddle(2);
+ *  Card(52);				//Create instance of a card
+ *  card1.setValue(2);		//Make the card worth the value of 2
+ *  card1.setRank(2);		//Set the rank of the card as 2
+ *  card1.setSuit(3);		//Assign the card to the Hearts suit
+ *  card1.getValue();		//Get the value of the card
+ *  card1.getRank();		//Get the rank of the card
+ *  card1.getSuit();		//Get the suit number of the card
+ *  !card1.isAce();			//See if the card rank is an ace
+ * 	card1.print();			//Print out one instance of a card
+ * 	card1.cardMiddle(2);	//Print out the middle of a card where the suit is
  *
  */
 class Card
@@ -72,9 +72,9 @@ public:
 
 /**
 * Card:
-
+*
 *    Constructor. Card is not initialized, just created.
-
+*
 * Params:
 *    1 int : Where the card is in the deck
 *
@@ -92,15 +92,15 @@ Card :: Card(int _position)
 }//End of Card(int)
 
 /**
-* setValue:
-
+* Public: setValue
+*
 *    A function which sets the value of a card.
 *	 If the card is an ace already in play then the 
 *	 card will change its value to one. All cards
 *	 higher than nine will have a value of 10 with
 *	 the exception of an Ace which is initialized to
 *	 11;
-
+*
 * Params:
 *    1 int : One less than the value of to be given for 2-9
 *
@@ -129,13 +129,13 @@ void Card :: setValue(int val)
 }//End of setValue(int)
 
 /**
-* setRank:
-
+* Public: setRank
+*
 *    A function which sets the rank of a card.
 *	 Cards are given a rank in the order, Ace to King.
 *	 All ranks are characters rather than integers as some
 *	 are ranked as Jack, Queen, King, and Ace.
-
+*
 * Params:
 *    1 int : Value of card to be converted to its proper rank
 *
@@ -173,8 +173,8 @@ void Card :: setRank(int _rank)
 }//End of setRank()
 
 /**
-* setSuit:
-
+* Public: setSuit
+*
 *    A function which gives each card its suit.
 *	Suits are from Hearts, Diamonds, Clubs, to spades
 *	The suit is a number rather than a character because 
@@ -183,7 +183,7 @@ void Card :: setRank(int _rank)
 *	The number given is icremented by one because the switch case 
 *	for the symbols goes from 1-4 and any other number is determined 
 *	to be a slash for the back side of a card.
-
+*
 * Params:
 *    1 int : Value to be incremented and assigned as the suit value
 *
@@ -198,10 +198,10 @@ void Card :: setSuit(int _suit)
 }//End of setSuit()
 
 /**
-* getValue:
-
+* Public: getValue
+*
 *    A getter function which returns the value of a card
-
+*
 * Params:
 *    None
 *
@@ -216,10 +216,10 @@ int Card :: getValue()
 }//End of getValue()
 
 /**
-* getRank:
-
+* Public: getRank
+*
 *    A getter function which returns a card's rank
-
+*
 * Params:
 *    None
 *
@@ -234,10 +234,10 @@ char Card :: getRank()
 }//End of getRank()
 
 /**
-* getSuit:
-
+* Public: getSuit
+*
 *    A getter function which returns the number designated to a certain suit
-
+*
 * Params:
 *    None
 *
@@ -252,10 +252,10 @@ int Card :: getSuit()
 }//End of getSuit()
 
 /**
-* getPosition:
-
+* Public: getPosition
+*
 *    A getter function which returns the position of where the card was initially in the deck
-
+*
 * Params:
 *    None
 *
@@ -270,7 +270,7 @@ int Card :: getPosition()
 }//End of getPosition()
 
 /**
-* isAce:
+* Public: isAce
 *    A function which determines whether a card is an Ace or not
 * Params:
 *    None
@@ -290,13 +290,13 @@ bool Card :: isAce()
 }//End of isAce()
 
 /**
-* Print:
-
+* Public: Print
+*
 *    A getter function which prints out a single card is desired.
 *	 This function is more for testing rather than used in the 
 *	 blackjack game. Cards are 5x7. Symbols are printed based 
 *	 on the suit number using a switch case.
-
+*
 * Params:
 *    None
 *
@@ -338,13 +338,13 @@ void Card :: Print()
 }//end of Print()
 
 /**
-* cardMiddle:
+* Public: cardMiddle
 *    A function which returns the middle of a card
 *	 as well as the appropriate symbol for a card.
 *	 This function is necessary rather than just returning
 *	 the symbol because the program acts strangely with 
 *	 properly formatting the rest of the card otherwise.
-
+*
 * Params:
 *    None
 *

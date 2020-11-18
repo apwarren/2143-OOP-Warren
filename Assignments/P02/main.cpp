@@ -50,8 +50,8 @@ using namespace std;
 int main() {
 
     //Declarations
-    char playAgain;
-    int decks;
+    char playAgain;     //User input to continue playing
+    int decks;          //How many decks are to be implemented into the game
 
     //Determine amount of decks needed for game
     cout << "How many decks do you want to play with? ";
