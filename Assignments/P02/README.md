@@ -10,111 +10,154 @@ a deck. The user can play against a dealer and other players with a starting amo
     - A default card is the "back side" of a card.
 - Private:
    - Data: 
-     - Value: How much the card is worth
-     - Suit:  Heart, Spade, Diamond, Clover
-     - Rank:  Numbers 2-9, Jack, Queen, King, Ace
+     - int value 		  How much card is worth in sum
+     - int Suit    	  Heart, Club, Spade, Diamond
+     - char Rank	 	  2-10, Jack, Queen, King, Ace
+     - int Position   Where it originally was in the deck
 - Public:
   - Methods:
-     - SetValue:  Sets value of card
-     - SetRank:   Gives the card its rank
-     - SetSuit:   Sets the suit of the card
-     - GetValue:  Returns value of card
-     - isAce:     Returns true if card rank is Ace
-     - Print:     Prints out card to screen
-     - Operator<: Compares two card values
-#### Class Deck
+     - Card(int):  	Sets a card's initial positon if the deck
+     - setValue:  	Sets value of card
+     - setRank:  		Gives the card its rank
+     - setSuit:    	Sets the suit of the card
+     - getValue: 		Returns value of card
+     - getRank:		  Returns rank of card
+     - getSuit:		  Returns number repsresenting a suit
+     - getPosition:	Returns where the card iniitally was
+     - isAce: 		  Returns true if card rank is Ace
+     - Print: 	  	Prints out card to screen
+     - cardMiddle: 	Return middle of card containing suit symbol
+#### Class Container
   - Description:
-    - A class containing all instances of a card. 
-    - It is in charge of shuffling and keeping track of all undealed cards.
+    - A class containing all instances of a card and adding cards 
   - Protected:
     - Data:
-      - Cards:       An array containing all cards contained inside the deck as well as one extra card representing the back of a card.
-      - DeckSize:    How many total cards are in deck + 1 extra
-      - CurrentSize: How many cards are currently left in the deck
+      - vector<Card *> cards; 	Vector of all cards in the container
+      - unsigned int Size; 	  	Size of how many cards are created
   - Public:
     - Methods:
-      - Fill: Fills and intializes Cards in Deck
-      - Shuffle: Places cards in random order
-      - Deal:  Removes a card from the deck
-      - IsEmpty: checks if deck is empty
-      - Reset:  replaces deck with a new, completely filled	deck
-      - cardBack: returns the card class representing back of a card
+      - Container(int numCard);	Constructor. How many cards to make
+      - void add(Card* card);	Add a card to a container
+      - bool isEmpty();			See if no cards are in container
+      - int size();				Current  amount of cards in container
+      - void Sort();			 Arrange cards in container by rank
+#### Class Deck
+  - Description:
+    - It is in charge of shuffling and keeping track of all undealed cards.
+  - Private:
+    - Data:
+      - int OriginalSize;     The maximum amount of cards that can be in the deck
+    - Methods:
+      - void Fill();		Initialize all cards in container
+      - void reset();	Refill and shuffle the deck
+      - void Shuffle();	Randomly swap elements in deck
+  - Public:
+    - Methods:
+      - Deck();			Construtctor creates 52 cards 
+      - Deck(int GivenSize); Constructor creates 52 * # of decks
+      - Card* remove();	 Removes card from back of deck
+      - void PrintDeck();	Print	 out 13 cards per row for all cards
 #### Class Hand
   - Description:
     - A class containing all instances of cards currently obtained by a specific player.
-    - A subclass that inherits from the Deck class and is composed in the Player class.
+    - A subclass that inherits from the Container class and is composed in the Human class.
   - Private:
     - Data:
-      - Total: Sum of all card values within the hand
-      - Cards: Array containing all cards the player has
-      - Size: How many cards Player has
+      - int sum;    Total card value of all cards in hand
   - Public:
     - Methods:
-      - getTotal: Returns Total sum of cards
-      - Discard:  Removes a specific card
-      - Sort:  Places cards in a specific order
-      - Operator<: Compares Hand total to other Hands
-      - Operator<<: Prints out all cards in Hand
+      - Hand(Card* card1);				Consturctor for dealer
+      - Hand(Card* card1, Card* card2);	Constructor for player
+      - int getTotal();			          Get the total value of all cards
+      - void addSum(Card* another);     Add value of new card to sum
+      - void getCardFront(Card* temp);  Replace first card with another
+      - int size();					 Return how many card in hand
+      - void changeAce();			Change ace value to 1
+      - Hand operator<(const Hand &rhs); Compare hand values
+      - void PrintHand();			Print cards in hand 5 per row
+  #### Class Human
+   - Description:
+     - Parent class for the Player and Dealer class
+     - Responsible for creating each classes hand
+     - And overlapping methods such as adding cards to hand and busting.
+   - Protected
+     - Data:
+       - Hand Cards;      Human's own respective cards
+       - string Name;     Title of human
+       - bool Active;     Whether the human has finished their turn
+   - Public:
+     - Methods:
+       - Human(Card* card1);		          	Constructor for Dealer class
+       - Human(Card* card1, Card* card2);   Constructor for Player class
+       - void Hit(Card* another);		Add a card to a human's hand
+       - void Stand();			      	Sets player to inactive
+       - bool Bust();			         	Hand total is over 21
+       - int sum();				         	Returns total hand value
+       - bool isActive();	    			Checks to see if active is true
+       - void printHand();    			Print out a hand 5 cards per row
+
  #### Class Player
    - Description:
      - A class containing the rules and behavior of a single player.
    - Private
      - Data:
-       - Bank: How much money the player has
-       - BetAmount: How much money the player is betting
-     - Methods:
-       - Win: Adds 2X Final Bet Amount to bank
-       - Bet: Subtracts bet amount from bank
-       - Bankrupt: Returns true if player bank is 0
-       - DoubleDown: If Player intial hand total is 10 or 11, allows player chance to bet an extra $50
-       - BlackJack:  If Player's initial hand total is 21, they automatically win 2.5X initial bet amount
-   - Protected:
-     - Data:
-       - Hand: instance of all cards the player currently has
-       - Name: Identifies the player
-       - Active: Flag to determine if player is still playing current game or has called Stand
+       - static int Bank;       How much money the player has over all games
+       - int BetAmount;         How much the player is going to bet
+       - bool DoubledDown;      Whether the player has already chosen to doubledown if allowed
    - Public:
      - Methods:
-       - Hit: Adds card to player hand
-       - Bust: Player hand total is over 21. Player loses
-       - Stand: Sets Active to false. Player is finished with hand
-       - isActive: Returns Active. Gives the player's status
-       - PrintHand:  Prints out all the cards that are in the player's hand
+       - Player(Card* card1, Card* card2);	Constructor--Gives two cards from deck
+       - void Bet();				  Removes money from bank to place bet
+       - void Win();			    Gives player twice bet amount to their bank
+       - void Tie();				  Returns bet money to player
+       - bool Bankrupt();		  Player bank is less than $100- cannot bet money
+       - int getBank();			  Returns how much money is in bank
+       - bool BlackJack();		Checks to see if player's initial hand equals 21
+       - void DoubleDown();		Player initial hand is either 11 or 10. can bet +$50
+       - void chooseDD();		  Player bets additional $50 on game
+       - void sortHand()	;		Sort cards in hand by rank
  #### Class Dealer
    - Description:
-     - A subclass of a player with additional, exclusive rules. Acts as the game's dealer
+     - Acts as the game's dealer
      - The dealer only shows one of its initial cards and must keep hitting until its hand is above a certain value 
      - Does not have a bank
    - Private:
      - Data:
-       - Name: Identifies the dealer
-       - Hand: Instance of all the dealer's cards
-       - Active: Determines current player status.
+       - Card* temp;   		Stores the first card of the dealer
+       - int handSum;  	  Total sum of dealer's hand
    - Public:
      - Methods:
-       - Hit: Adds Card to Dealer's hand
-       - UnderHit: Checks if hand total is under 17
-       - Bust: Dealer hand goes over 21
-       - BlackJack: If dealer gets a blackjack then all player's lose and next round begins
-       - PrintDHand: Prints out all  current cards in dealer's hand except the first one. The first one prints out the "back" side of the card
-       - PrintHand: Prints out all cards in dealer's hand. Reveals and prints dealer hand total.
+       - Dealer(Card* card1, Card* card2);	Gives Dealer two cards from deck and stores the first card in a temporary location
+       - bool underHit();		Dealer hand value in under 17
+       -  bool BlackJack();		Dealer's iniital hand equals 21
+       - void revealBlank();		Swaps blank card for the first card in the temp location
       
- #### Class BlackJack_Game
+ #### Class BlackJack
    - Description:
      - A class in charge of implementing the rules of the BlackJack. 
-     - It manages all Players (including the Dealer) and the deck. 
+     - It manages the Player, Dealer, and the Deck. 
      - It determines the winner of each game and distributes winnings.
    - Private:
      - Data:
-       - Deck: Sets how many cards can be played
-       - Players: Array containing all players. The first index is always the Dealer
-       - Quit: Flag to determine if user is done playing
-       - Winner: Contains player with highest total under 22
-       - Still: Keeps track of all players still in play and have not hit Stand. 
+       - Deck CardDeck;             All cards which can possibly be played
+       - Player* player;            Instance of a player
+       - Dealer* dealer;            Instance of the dealer
+       - char playerOutput;         Determines actions chosen by user
+       - bool Quit;                 Flag to determine when user is done playing
+       - int Activity;              Determines status of current game
+       - bool playerMoveOn;         Used to determine when player has stood or quit
+       - bool showDealerSum;        When game ends with no player bust, Dealer's total is shown
+     - Methods:
+       - void playerTurn();	Handles activity for player's and prints actions for user to choose
+       - void dealerTurn();	Handles activity for dealer and hits until value is at least 17
+       - void resetGame();	Resets all variables for the next possible game
+       - void noBust();		Neither the player nor dealer bust so it compares the two hand values
+       - void Print();		Prints out all graphics for current game activity
    - Public:
      - Methods:
-       - Deal: Deals out cards for current round
-       - Print: Prints out current state of game to console
-       - nextRound: Issues all final tallies to the players and begins a new game when Still reaches 0
+       - BlackJack(int decks);	Constructor, sets how many decks are needed in game and sets all flags
+       - void Deal();			      Begins and enacts a game of BlackJack
+       - bool quit();			      Returns whether player has chosen to quit game
+       - void PrintBeginning();	Prints out a home screen for beginning of program
  #### Diagram
-<img src="https://i.imgur.com/Wv0bWiC.png" width="900">
+<img src="https://i.imgur.com/R5jr9sw.png" width="900">

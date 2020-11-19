@@ -72,9 +72,6 @@ class BlackJack
     bool quit();
     void PrintBeginning();
     
-  private:
-
-
 };
 
 /**
