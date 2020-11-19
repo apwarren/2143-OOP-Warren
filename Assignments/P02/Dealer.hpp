@@ -26,7 +26,7 @@ using namespace std;
  *      - None
  *
  * Usage:
- *  Dealer(card1, card2);			//Create instance of Dealer
+ *  Dealer dealer(card1, card2);			//Create instance of Dealer
  *  dealer.underHit();        //Checks to see if hand total is below 17
  *  dealer.BlackJack();       //Checks to see if initial two cards total 21
  *  dealer.revealBlank();     //Swaps blank card with original actual card

@@ -34,7 +34,7 @@ using namespace std;
  *
  * Usage:
  *
- *  BlackJack(3);           //Create instance of BlackJack
+ *  BlackJack game(3);           //Create instance of BlackJack
  *  Game.Deal();            //Initiate a game of BlackJack
  *  Game.quit();           //Flag to see is user wants to quit playing
  *  Game.PrintBeginning();  //Print out the Home screen before playing game

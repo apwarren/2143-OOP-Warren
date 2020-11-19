@@ -36,7 +36,7 @@ using namespace std;
  *
  * Usage:
  *
- *  Card(52);				//Create instance of a card
+ *  Card card1(52);				//Create instance of a card
  *  card1.setValue(2);		//Make the card worth the value of 2
  *  card1.setRank(2);		//Set the rank of the card as 2
  *  card1.setSuit(3);		//Assign the card to the Hearts suit
