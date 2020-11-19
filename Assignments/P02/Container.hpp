@@ -55,7 +55,7 @@ public:
 *		and set the size to how many total cards exist.
 *
 * Params:
-*    None
+*    1 int	:	number of cards to be implemented into the vector
 *
 * Returns:
 *     Void

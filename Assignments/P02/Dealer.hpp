@@ -57,7 +57,7 @@ class Dealer : public Human
 *     cards value to the total. 
 *
 * Params:
-*    None
+*    2 Card*  : the first two cards to put into dealer's hand
 *
 * Returns:
 *     Void

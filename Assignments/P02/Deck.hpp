@@ -93,7 +93,7 @@ Deck :: Deck() : Container (52) //Initialize a deck of 52 cards
 *     with and will fill the deck with 52 times that number for cards.
 *
 * Params:
-*    None
+*    1 int  : Size of deck/ How many cards are to be in the deck
 *
 * Returns:
 *     Void
