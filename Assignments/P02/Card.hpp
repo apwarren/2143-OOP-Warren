@@ -43,7 +43,7 @@ using namespace std;
  *  card1.getValue();		//Get the value of the card
  *  card1.getRank();		//Get the rank of the card
  *  card1.getSuit();		//Get the suit number of the card
- *  !card1.isAce();			//See if the card rank is an ace
+ *  card1.isAce();			//See if the card rank is an ace
  * 	card1.print();			//Print out one instance of a card
  * 	card1.cardMiddle(2);	//Print out the middle of a card where the suit is
  *

@@ -26,7 +26,7 @@
  * Usage:
  *  Container(52);			//Create instance of container
  * 	CardDeck.add(card12);	//Add a card to the back of the container
- * 	!CardDeck.isEmpty();	//Check to see if there are any cards in the container
+ * 	CardDeck.isEmpty();	//Check to see if there are any cards in the container
  * 	CardDeck.size();		//Return how many cards are in the container
  * 	CardDeck.Sort();		//Sort the cards in the container by rank
  *
