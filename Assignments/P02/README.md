@@ -1,6 +1,26 @@
-## Program 02 - Blackjack
+## PO2 - Blackjack Game
+### Allyson Warren
+### Description:
 This program implements a game of BlackJack by encapsulating several different classes representing different aspects of the game such as cards, players, and 
-a deck. The user can play against a dealer and other players with a starting amount of $1000 and play until they choose to quit or go bankrupt.
+a deck. The user can play against a dealer with a starting amount of $1000 and play until they choose to quit or go bankrupt. The player is also able to make other choices 
+during their turn such as viewing all remaining cards in the deck and sorting the cards in their hand by rank. If the player gets an initial hand of 10 or 11, they are
+also able to choose if they wish to bet and additional $50 during a game. There is no ability to Split in this program however. If the player manages to get a 
+Blackjack, they will be awared 2.5X their betting amount. When a player finishes a game, the computer will ask if they wish to play again, if the player wishes to quit 
+then the program will bid farewell and end.
+
+### Files:
+
+|   #   | File                                                                                         | Description                     |
+| :---: | -------------------------------------------------------------------------------------------- | ------------------------------- |
+|   1   | [main.cpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/main.cpp) | Main driver of my blakcjack program. |
+|   2   | [BlackJack.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/BlackJack.hpp) | File containing the rules and implementation of a blackjack game |
+|   3   | [Card.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Card.hpp) | File containing the implementation of a single card. Contains value, rank, and suit of a card|
+|   4   | [Container.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Container.hpp) | File containing all instances of Cards. Cards are stored in a vector which can grow or shrink when desired |
+|   5   | [Dealer.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Dealer.hpp) | File containing the rules and actions of a Dealer. The dealer is managed by the computer. It has one hidden card at beginning of game |
+|   6   | [Deck.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Deck.hpp) | File containing all playable and unused cards for the game. User can play with as many decks as desired |
+|   7   | [Hand.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Hand.hpp) | File containing all cards in use by either the player or dealer. Cards can be sorted when desired |
+|   8   | [Human.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Human.hpp) | File containing all actions expected by both the player and dealer. Player and Dealer inherit from this class |
+|   9   | [Player.hpp](https://github.com/apwarren/2143-OOP-Warren/blob/master/Assignments/P02/Player.hpp) | File containing all the capable actions that can be executed by the player. The user can choose certain actions during a game such as hit or stand.  |
 
 ### Class Designs
 
